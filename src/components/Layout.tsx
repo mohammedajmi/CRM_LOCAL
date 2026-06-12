@@ -3,13 +3,11 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, ListChecks, BarChart3, ShieldAlert,
   Bell, ChevronDown, LogOut, Moon, Sun, Menu, X,
-  Database, ZapOff, Mail,
+  ZapOff,
 } from 'lucide-react';
 import { getCurrentUser, logout, onAuthChange } from '../data/auth';
 import { Theme } from '../data/db';
 import type { User } from '../data/types';
-
-const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL || 'mohammed.alajmi@ohb.co.om';
 
 const NAV_SECTIONS: { heading?: string; links: { to: string; label: string; icon: React.ReactNode; end?: boolean }[] }[] = [
   {
@@ -193,20 +191,6 @@ export const Layout: React.FC = () => {
 
         {/* Content */}
         <main className="flex-1 overflow-auto">
-          {/* Offline banner */}
-          <div className="flex flex-wrap items-center gap-2 bg-amber-50 dark:bg-amber-900/20 border-b border-amber-200 dark:border-amber-800 px-4 md:px-8 py-2 text-xs text-amber-800 dark:text-amber-300">
-            <Database size={13} className="shrink-0" />
-            <span>
-              <strong>Offline mode</strong> — all data is stored in your browser. Nothing is sent to a server.
-            </span>
-            <a
-              href={`mailto:${ADMIN_EMAIL}`}
-              className="ml-auto flex items-center gap-1 hover:underline"
-            >
-              <Mail size={11} />
-              {ADMIN_EMAIL}
-            </a>
-          </div>
           <div className="p-4 md:p-8 max-w-[1600px] mx-auto">
             <Outlet />
           </div>
